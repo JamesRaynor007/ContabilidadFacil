@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Contabilidad de Diez</title>
+<style>
+  body { background-color: #46826D; color: white; font-family: Arial, sans-serif; }
+  /* Agrega estilos según tu preferencia */
+</style>
+</head>
+<body>
+<h1 style="text-align: center;">Contabilidad de Diez</h1>
+
+<form id="formulario">
+  <table>
+    <tr><th>Valor</th><th>Tipo</th></tr>
+    <!-- Repetir 10 veces -->
+    <script>
+      for(let i=0; i<10; i++){
+        document.write('<tr>');
+        document.write('<td><input type="number" id="valor'+i+'" style="width:80px;"></td>');
+        document.write('<td><select id="tipo'+i+'"><option value="Débito">Débito</option><option value="Crédito">Crédito</option></select></td>');
+        document.write('</tr>');
+      }
+    </script>
+  </table>
+  <button type="button" onclick="calcular()">Calcular Totales</button>
+</form>
+
+<h2>Resultados</h2>
+<pre id="resultados"></pre>
+
+<script>
+function calcular() {
+  let totalDebitos = 0;
+  let totalCreditos = 0;
+  let hayEntradaValida = false;
+
+  for(let i=0; i<10; i++){
+    const valorStr = document.getElementById('valor'+i).value.trim();
+    const tipo = document.getElementById('tipo'+i).value;
+    if(valorStr !== ''){
+      const valor = parseFloat(valorStr);
+      if(isNaN(valor) || valor < 0){
+        alert('Por favor ingrese un número válido y no negativo en el campo ' + (i+1));
+        return;
+      }
+      if(tipo === 'Débito'){
+        totalDebitos += valor;
+      } else {
+        totalCreditos += valor;
+      }
+      hayEntradaValida = true;
+    }
+  }
+
+  if(!hayEntradaValida){
+    alert('Debe ingresar al menos un campo numérico.');
+    return;
+  }
+
+  const diferencia = Math.abs(totalDebitos - totalCreditos);
+  document.getElementById('resultados').textContent =
+    `Total Débitos: ${totalDebitos.toFixed(2)}\n` +
+    `Total Créditos: ${totalCreditos.toFixed(2)}\n` +
+    `Diferencia: ${diferencia.toFixed(2)}`;
+}
+</script>
+
+</body>
+</html>
