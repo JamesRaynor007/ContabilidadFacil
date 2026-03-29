@@ -187,3 +187,14 @@ button {
 .btn-save:hover {
   background-color: #00cc00;
 }
+
+
+/* Añade esto al final de tu CSS */
+@media (max-width: 600px) {
+  body {
+    transform: scale(1.2);
+    transform-origin: top left;
+    width: calc(100% / 1.2);
+  }
+}
+
