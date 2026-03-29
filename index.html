@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <title>Contabilidad de Diez</title>
 <!-- Enlace al archivo CSS externo -->
 <link rel="stylesheet" href="style.css" />
@@ -24,13 +24,11 @@
 <!-- Carga el script justo antes de cerrar el body -->
 <script src="JavaScript/JavaScript.js"></script>
 
-<!-- Alternativamente, puedes usar un evento DOMContentLoaded para asegurar que el script se ejecute cuando el DOM esté listo -->
+<!-- Opcional: inicialización cuando el DOM esté listo -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Aquí puedes llamar a funciones o inicializar tu código si es necesario
-    if (typeof init === 'function') {
-      init();
-    }
+    // Si tienes una función init, descomenta la línea
+    // if (typeof init === 'function') { init(); }
   });
 </script>
 </body>
