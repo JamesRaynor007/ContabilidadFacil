@@ -4,8 +4,32 @@ body {
   color: white; 
   font-family: Arial, sans-serif; 
   margin: 0;
-  padding: 20px;
-  text-align: center;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Contenedor principal para el contenido, para hacerlo flexible en móvil */
+.contenido-principal {
+  width: 100%;
+  max-width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Contenedor de la tabla ajustado para pantalla completa y scroll horizontal si es necesario */
+.tabla-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto; /* para tablas que puedan ser más anchas que la pantalla */
 }
 
 /* Estilos para títulos h1 y h2 */
@@ -24,20 +48,13 @@ h1, h2 {
   font-size: 15px;
 }
 
-/* Contenedor de la tabla */
-.tabla-container {
-  display: inline-block;
-  text-align: left;
-  width: 100%;
-  max-width: 700px;
-}
-
 /* Estilos para la tabla */
 table {
   margin: 0 auto;
   border-collapse: collapse;
   background-color: #17c1e3;
   width: 100%;
+  font-size: 14px; /* tamaño base ajustado en móvil en media query */
 }
 
 /* Estilos para cabeceras y celdas */
@@ -65,7 +82,7 @@ button {
 /* Medios de consulta para pantallas pequeñas (max 600px) */
 @media (max-width: 600px) {
   body {
-    padding: 10px;
+    padding: 0;
   }
   h1, h2 {
     font-size: 16px;
@@ -84,9 +101,14 @@ button {
   table {
     font-size: 14px;
   }
+  /* Ajustar paddings en celdas para mejorar legibilidad en móvil */
+  th, td {
+    padding: 8px 8px;
+  }
+  /* Opcional: hacer que las celdas sean más ajustadas o reducir tamaño si es necesario */
 }
 
-/* Medios de consulta para pantallas muy pequeñas (max 400px) */
+/* Para pantallas aún más pequeñas (max 400px) */
 @media (max-width: 400px) {
   h1, h2 {
     font-size: 14px;
